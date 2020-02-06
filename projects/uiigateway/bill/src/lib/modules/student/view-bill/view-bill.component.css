@@ -1,0 +1,9 @@
+::ng-deep .text-green {
+    color:#4db6ac;
+    font-size: 16px;
+    
+}
+::ng-deep .text-gray {
+    color:#FF5252;
+    font-size: 15px;    
+}

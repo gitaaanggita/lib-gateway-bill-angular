@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <button class="close" type="button" aria-label="close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h5 class="modal-title">Edit</h5>
+</div>
+
+<div class="modal-body">
+  <table class="table table-unbordered table-30-70">
+    <tr>
+      <td class="padding-5">Komponen</td>
+    </tr>
+    <tr>
+      <td class="padding-5">Tagihan awal (belum dipotong)</td>
+    </tr>
+  </table>
+  <div class="dynamic-form">
+    <div class="dynamic-form-item">
+      <div class="dynamic-form-group">
+        <div class="row">
+          <div class="col-sm-7 col-sm-5">
+            <div class="form-group">
+              <label class="control-label">Jenis potongan</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-7 col-sm-5">
+            <div class="form-group">
+              <label class="control-label">Keterangan/Deskripsi</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-7 col-sm-5">
+            <div class="form-group">
+              <label class="control-label">Nominal (Rp)</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dynamic-button-group">
+        <button type="button" class="btn btn-danger btn-delete">
+          <span class="fa fa-minus"></span>
+        </button>
+        <button type="button" class="btn btn-success btn-add">
+          <span class="fa fa-plus"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <label>Total potongan</label>
+  <div class="panel-body">
+
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="form-button button-align-center">
+    <button class="btn btn-default" type="button">Batal</button>
+    <button class="btn btn-primary" type="submit">Simpan</button>
+  </div>
+</div>

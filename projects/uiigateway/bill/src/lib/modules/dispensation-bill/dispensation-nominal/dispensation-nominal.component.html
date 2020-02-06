@@ -1,0 +1,83 @@
+<h4 class="content-header-title">Nominal</h4>
+
+<div class="content-body" style="padding: 15px 20px 5px 20px;">
+  <div class="row">
+    <div class="col-md-2 input-padding-right" style="padding-left: 10px;">
+      <label>Nomor tagihan</label>
+      <input type="text" class="form-control" required maxlength="10">
+    </div>
+    <div class="col-md-5" style="padding-left: 20px;">
+      <div class="table-responsive">
+         <table class="table table-unbordered table 40-60">
+           <tr>
+             <td style="vertical-align: middle; padding: 0;">NIM</td>
+             <td style="vertical-align: middle; padding: 0;">:</td>
+           </tr>
+           <tr>
+             <td style="vertical-align: middle; padding: 0;">Nama</td>
+             <td style="vertical-align: middle; padding: 0;">:</td>
+           </tr>
+           <tr>
+             <td style="vertical-align: middle; padding: 0;">Fakultas</td>
+             <td style="vertical-align: middle; padding: 0;">:</td>
+           </tr>
+           <tr>
+             <td style="vertical-align: middle; padding: 0;">Program studi</td>
+             <td style="vertical-align: middle; padding: 0;">:</td>
+           </tr>
+         </table>
+      </div>
+    </div>
+    <div class="col-md-5" style="padding-left: 20px;">
+      <div class="table-responsive">
+        <table class="table table-unbordered table-40-60">
+          <tr>
+            <td style="vertical-align: middle; padding: 0;">Periode</td>
+            <td style="vertical-align: middle; padding: 0;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle; padding: 0;">Angkatan</td>
+            <td style="vertical-align: middle; padding: 0;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle; padding: 0;">Jenis tagihan</td>
+            <td style="vertical-align: middle; padding: 0;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle; padding: 0;">Status bayar</td>
+            <td style="vertical-align: middle; padding: 0;">:</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="content-border"></div>
+  <!-- <div class="general-information-container">
+    <p>Tagihan: -</p>
+  </div> -->
+  <div class="table-wrapper">
+    <uii-table
+    *ngIf="showTable"
+    [actionColumn]="true"
+    [columns]="columns"
+    [rows]="rows"></uii-table>
+  </div>
+  <div class="content-body">
+    <table class="table table-20-80">
+      <tr>
+        <td>Total</td>
+      </tr>
+    </table>
+  </div>
+  <div class="panel-body padding-0 margin-bottom-10">
+    <table class="table table-unbordered table-20-80">
+      <tr>
+        <td>Total dibayarkan setelah dispensasi</td>
+      </tr>
+    </table>
+  </div>
+  <div class="form-button button-action-center">
+    <button class="btn btn-default" type="button">Batal</button>
+    <button class="btn btn-primary" type="submit">Simpan</button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h4 class="content-header-title">Tagihan mahasiswa</h4>
+
+<div class="content-body">
+  <uii-table-skeleton *ngIf="!showTable"></uii-table-skeleton>
+  <div class="table-wrapper">
+    <uii-table
+      [actionColumn]="true"
+      [columns]="columns"
+      [rows]="rows"
+      (detailClicked)="onClickBtnView($event)">
+    </uii-table>
+  </div>
+
+  <div class="form-button button-action-center margin-top-10">
+    <button class="btn btn-default" type="button" (click)="onBtnBack()">Kembali</button>
+  </div>
+</div>

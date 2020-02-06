@@ -1,0 +1,75 @@
+<h4 class="content-header-title">Tambah</h4>
+<div class="content-body">
+  <uii-form-wizard [pagingLabel]="paginateLabel">
+    <uii-wizard-step [title]="wizardTitle1" [subtitle]="wizardSubTitle1" (onCancel)="onBtnBackClick()">
+      <form>
+        <div class="form-group">
+          <label class="control-label control-required">Program studi</label>
+          <ngx-select></ngx-select>
+        </div>
+        <div class="form-group">
+          <label class="control-label control-required">Periode</label>
+          <ngx-select></ngx-select>
+        </div>
+        <div class="form-group">
+          <label class="control-label control-required">Angsuran</label>
+          <ngx-select></ngx-select>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-7" style="width: 100%">
+            <div class="col-sm-6">
+              <label class="control-label control-required">Tanggal publish</label>
+              <div class="input-group">
+                <input class="form-control">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label control-required">Tanggal akhir pembayaran</label>
+              <div class="input-group">
+                <input class="form-control">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </uii-wizard-step>
+    <uii-wizard-step [title]="wizardTitle2" [subtitle]="wizardSubTitle2" (onCancel)="onBtnBackClick()">
+      <div class="row">
+        <div class="col-sm-4" style="width: 100%;">
+          <table class="table table-unbordered table-20-80 margin-bottom-10">
+             <tr>
+              <td style="vertical-align: middle; padding: 0;">Program studi</td>
+              <td style="vertical-align: middle; padding: 0;">:</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 0;">Periode&Angsuran</td>
+              <td style="vertical-align: middle; padding: 0;">:</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 0;">Tanggal publish</td>
+              <td style="vertical-align: middle; padding: 0;">:</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 0;">Batas akhir pembayaran</td>
+              <td style="vertical-align: middle; padding: 0;">:</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="button-action-right">
+        <button class="btn btn-primary" (click)="onBtnAddClick($event)">Tambah</button>
+      </div>
+      <div class="table-wrapper">
+        <uii-table 
+        [serverMode]="true" 
+        [actionColumn]="true" 
+        [columns]="columns" 
+        [rows]="rows">
+        </uii-table>
+      </div>
+
+    </uii-wizard-step>
+  </uii-form-wizard>
+</div>

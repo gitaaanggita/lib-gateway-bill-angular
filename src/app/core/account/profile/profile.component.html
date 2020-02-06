@@ -1,0 +1,105 @@
+<aside id="sidebar">
+  <div class="profile-display">
+      <div class="image">
+        <img src="{{ userInfo.photo }}" alt="User" class="img-responsive center-block" (error)="onImageError()">
+      </div>
+      <h3>{{ userInfo.name }}</h3>                           
+  </div>
+</aside>
+<section id="content" class="profile-properties">
+  <tabset [justified]="true" class="tab">
+    <tab heading="{{ 'Data Diri' | translate }}">
+      <div class="content-body">
+        <div class="panel">
+          <div class="panel-body">
+            <table class="table table-unbordered table-20-80 margin-bottom-0">
+              <tr>
+                <td><strong>{{'user id'|translate}}</strong></td>
+                <td class="underlined">{{userInfo.kd_member}}</td>
+              </tr>
+              <tr>
+                <td><strong>{{'email'|translate}}</strong></td>
+                <td class="underlined">{{userInfo.email}}</td>
+              </tr>
+              <tr>
+                <td><strong>{{'Organisasi'|translate}}</strong></td>
+                <td class="underlined">{{userInfo.nama_organisasi}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </tab>
+    <tab heading="{{'setting'| translate }}">
+      <div class="content-body">
+        <div class="container-fluids">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  {{'password'|translate}}
+                </div>
+                <div class="panel-body">
+                  <form [formGroup]="changePasswordForm" (ngSubmit)="onFormChangePasswordSubmit()">
+                    
+                    <div class="form-group" [ngClass]="{ 'has-error' : (!changePasswordForm.controls['oldPassword'].valid && changePasswordForm.controls['oldPassword'].touched) }">
+                      <label class="control-label" for="oldPassword">{{ 'password old' | translate }}</label>
+                      <input type="password" class="form-control" formControlName="oldPassword">
+                      <small *ngIf="changePasswordForm.controls['oldPassword'].hasError('required') && changePasswordForm.controls['oldPassword'].touched" class="text-danger">
+                        {{ 'required' | translate }}
+                      </small>
+                    </div>
+                    
+                    <div class="form-group" [ngClass]="{ 'has-error' : (!changePasswordForm.controls['newPassword'].valid && changePasswordForm.controls['newPassword'].touched) }">
+                      <label class="control-label" for="newPassword">{{ 'password new'| translate}}</label>
+                      <input type="password" class="form-control" formControlName="newPassword">
+                      <small *ngIf="changePasswordForm.controls['newPassword'].hasError('required') && changePasswordForm.controls['newPassword'].touched" class="text-danger">
+                        {{ 'required' | translate }}
+                      </small>
+                      <small *ngIf="changePasswordForm.controls['newPassword'].hasError('passwordQualified') && changePasswordForm.controls['newPassword'].touched" class="text-danger">
+                          {{ 'Password harus kombinasi dari huruf abjad dan angka, dengan minimal satu huruf besar atau simbol' | translate }}
+                        </small>
+                    </div>
+                    
+                    <div class="form-group" [ngClass]="{ 'has-error' : (!changePasswordForm.controls['newPasswordConfirm'].valid && changePasswordForm.controls['newPasswordConfirm'].touched) }">
+                      <label class="control-label" for="newPasswordConfirm">{{ 'confirm password' | translate}}</label>
+                      <input type="password" class="form-control" formControlName="newPasswordConfirm">
+                      <small *ngIf="changePasswordForm.controls['newPasswordConfirm'].hasError('required') && changePasswordForm.controls['newPasswordConfirm'].touched" class="text-danger">
+                        {{ 'required' | translate }}
+                      </small>
+                      <small *ngIf="changePasswordForm.controls['newPasswordConfirm'].hasError('validateEqual') && changePasswordForm.controls['newPasswordConfirm'].touched" class="text-danger">
+                        {{ 'Password tidak sama' | translate }}
+                      </small>
+                    </div>
+                    
+                    <div class="form-button button-action-right">
+                      <button class="btn btn-success" type="submit" [disabled]="!changePasswordForm.valid || onSubmitRequest" [ngClass]="{ 'loading' : onSubmitRequest }">{{ 'change' | translate }}</button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  {{'two factor authentication'|translate}}
+                </div>
+                <div class="panel-body">
+
+                  <div class="form-button button-action-center margin-top-10 margin-bottom-0">
+                    <button class="btn btn-success" type="button" [disabled]="onSubmitRequest" [ngClass]="{ 'loading' : onSubmitRequest }" (click)="onBtnTwoFactorClick()">
+                      {{ btnTwoFactorLabel | translate }}
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</section>

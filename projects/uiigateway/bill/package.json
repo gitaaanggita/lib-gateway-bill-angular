@@ -1,0 +1,23 @@
+{
+  "name": "@uiigateway/bill",
+  "version": "1.0.0",
+  "description": "Library package for UIITagihan",
+  "author": {
+    "name": "Anggit Fitriana",
+    "email": "gitaanggita@uii.ac.id"
+  },
+  "contributors": [
+    {
+      "name": "Khusni Latiful anwar",
+      "email": "khusni.latiful@uii.ac.id"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab-cloud.uii.ac.id/finance/frontend/lib-uii-gateway-bill-angular.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0"
+  }
+}

@@ -1,0 +1,26 @@
+<div class="row margin-bottom-10">
+  <div class="col-md-4 col-sm-6"> 
+    <a (click)="onNotPaidClicked()">
+      <uii-info-box title="Belum bayar" subtitle="" type="danger">
+        {{billCount.jumlah_tagihan_belum_dibayar}} tagihan
+        <p style="text-align: right; margin:0;">Lihat selengkapnya <span class="fa fa-arrow-right"></span></p>
+      </uii-info-box>
+    </a>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <a (click)="onPaidClicked()">      
+      <uii-info-box title="Sudah bayar" subtitle="" type="info">
+        {{billCount.jumlah_tagihan_terbayar}} tagihan
+        <p style="text-align: right; margin:0;">Lihat selengkapnya <span class="fa fa-arrow-right"></span> </p>     
+      </uii-info-box>
+    </a>
+  </div>    
+  <div class="col-md-4 col-sm-6">
+    <a (click)="onAllClicked()">      
+      <uii-info-box title="Total tagihan" subtitle="" type="oc-cyan">
+        {{billCount.jumlah_total_tagihan}} tagihan
+        <p style="text-align: right; margin:0;">Lihat selengkapnya <span class="fa fa-arrow-right"></span></p>        
+      </uii-info-box>
+    </a>
+  </div>    
+</div>

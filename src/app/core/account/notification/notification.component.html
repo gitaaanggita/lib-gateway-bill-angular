@@ -1,0 +1,35 @@
+<section id="content">
+  <div class="content-header">
+    <div class="clearfix padding-top-15">
+      <form class="pull-right form-sm">
+        <div class="form-group">
+          <div class="input-group input-group-search input-group-primary">
+            <input type="text" placeholder="Cari Notifikasi" class="form-control" (input)="keyword = $event.target.value">
+            <span class="input-group-btn">
+              <span class="btn btn-primary btn-search">
+                <span class="glyphicon glyphicon-search"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="content-body">
+    <ul class="notification-list">
+      <li *ngFor="let notif of notifList | arraySearch:{field: 'pesan', keyword: keyword}" [ngClass]="notif.flag_read == 0 ? 'unread':''">
+        <a (click)="read()" href="{{notif.url}}" class="icon">
+          <img alt="icon" src="{{notif.icon}}" class="img-responsive sm-profileimg">
+          <div class="notification-body">
+            <p class="notification-name">
+              {{ notif.pesan}}
+            </p>
+            <p class="notification-time">
+              {{notif.tgl_input | date:'dd MMM y hh:mm'}}
+            </p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

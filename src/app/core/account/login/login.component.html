@@ -1,0 +1,87 @@
+<div lazy-load-images>
+  <div class="uii-login" data-background-src="assets/images/bg-login.png">  
+    <div class="welcome-greeting">
+      <div class="greeting-box">
+        <div class="box">
+          <h1 class="title" innerHtml="{{ 'login greet title' | translate }}"></h1>
+          <div class="description">
+            <p>{{ 'login greet message' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <div class="form-signin">
+        <div class="image">
+          <img data-src="assets/images/uii-logo.png" alt="UII Gateway" class="img-responsive">
+        </div>
+
+        <form *ngIf="!enable2fa && !forget" name="form" (ngSubmit)="onFormLoginSubmit(loginForm.value)" [formGroup]="loginForm">
+          <div class="form-group" [ngClass]="{ 'has-error': (!loginForm.controls['username'].valid && loginForm.controls['username'].touched) }">
+            <input type="text" class="form-control has-icon form-icon-user" name="username" formControlName="username" placeholder="{{ 'login user label' | translate }}" />
+            <small *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched" class="text-danger">
+              {{ 'error empty username' | translate }}
+            </small>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': (!loginForm.controls['password'].valid && loginForm.controls['password'].touched) }">
+            <input type="password" class="form-control has-icon form-icon-key" name="password" formControlName="password" placeholder="{{ 'login password label' | translate }}" />
+            <small *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="text-danger">
+              {{ 'error empty password' | translate }}
+            </small>
+          </div>
+          <div class="form-group form-button">
+            <button [disabled]="!loginForm.valid || loading" class="btn btn-primary btn-block">{{ labelButton | translate }}</button>
+            <img alt="loading..." *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+            />
+          </div>
+          <div *ngIf="error && error.code" class="alert alert-danger">{{ error.message | translate }}</div>
+        </form>
+
+        <form *ngIf="enable2fa" name="formA" (ngSubmit)="fa.form.valid && onFormVerifyTwoFactorAuthSubmit()" #fa="ngForm" novalidate>
+          <div class="form-group" [ngClass]="{ 'has-error': fa.submitted && !code.valid }">
+            <input type="text" class="form-control has-icon form-icon-key" name="code" [(ngModel)]="model.code" #code="ngModel" required
+              placeholder="{{ 'code authenticator' | translate }}" />
+            <div *ngIf="fa.submitted && !code.valid" class="help-block">{{ 'error empty code authenticator' | translate }}</div>
+          </div>
+          <div class="form-group form-button">
+            <button [disabled]="loading" class="btn btn-primary btn-block">{{ 'verify 2fa' | translate }}</button>
+            <img alt="loading..." *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+            />
+          </div>
+          <div *ngIf="error && error.code" class="alert alert-danger">{{ error.message | translate }}</div>
+        </form>
+
+        <div *ngIf="forget" class="text-center">
+          <label class="control-label">
+            <strong>Kesulitan mengakses akun Anda?</strong>
+          </label>
+          <label class="control-label">Kami akan mengirimkan pesan email beserta tautan untuk reset Kata sandi Anda</label>
+          <form name="formF" (ngSubmit)="ff.form.valid && onFormResetPasswordSubmit()" #ff="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': ff.submitted && !nameemail.valid }">
+              <input type="text" class="form-control has-icon form-icon-user" name="nameemail" [(ngModel)]="model.nameemail" #nameemail="ngModel"
+                required placeholder="{{ 'username email label' | translate }}" />
+              <div *ngIf="ff.submitted && !nameemail.valid" class="help-block">{{ 'error empty username email' | translate }}</div>
+            </div>
+            <div class="form-group form-button">
+              <button [disabled]="loading" class="btn btn-primary btn-block">{{ 'reset password' | translate }}</button>
+              <img alt="loading..." *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </div>
+            <div class="form-group form-button">
+              <button class="btn btn-default btn-block" (click)="onBtnBackClick()">{{ 'back' | translate }}</button>
+            </div>
+
+            <div *ngIf="error && error.code" class="alert alert-danger">{{ error.message | translate }}</div>
+          </form>
+        </div>
+
+        <div class="account text-center" *ngIf="!forget && !enable2fa">
+          <p>
+            <button class="btn btn-link" (click)="onBtnForgotPassworClick()">{{ 'forgot password label' | translate }}</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

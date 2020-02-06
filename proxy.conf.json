@@ -1,0 +1,7 @@
+{
+    "/v1": {
+      "target": "https://cloud-api.uii.ac.id",
+      "secure": false,
+      "changeOrigin": true
+    }
+}

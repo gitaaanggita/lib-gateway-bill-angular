@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <button class="close" type="button" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h5 class="modal-title">Detail tagihan</h5>
+</div>
+  
+<div class="modal-body">
+  <table class="table table-unbordered table-30-70">
+    <tr>
+      <td class="padding-5">Nomor tagihan</td>
+      <td class="padding-5"> : {{ component }}</td>
+    </tr>
+    <tr>
+      <td class="padding-5">Jenis tagihan</td>
+      <td class="padding-5"> : {{ jenis_tagihan }}</td>
+    </tr>
+    <tr>
+      <td class="padding-5">Batas pembayaran</td>
+      <td class="padding-5"> : {{ batas_pembayaran | date: 'dd MMMM y' }}</td>
+    </tr>
+  </table>
+  <div class="table-wrapper">
+    <uii-table
+      [limitOptions]="false"
+      [searchOptions]="false"
+      [actionColumn]="true"  
+      [columns]="componentTableColumns"
+      [rows]="componentTableRows"
+      [footerInfo]="false"      
+      (detailClicked)="onClickBtnView($event)"></uii-table>
+  </div>
+  <p><b>Pembayaran dapat dilakukan melalui bank berikut:</b></p>
+  <div class="table-wrapper">
+    <uii-table
+      [limitOptions]="false"
+      [searchOptions]="false"
+      [actionColumn]="false"
+      [footerInfo]="false"
+      [columns]="bankTableColumns"
+      [rows]="bankTableRows"></uii-table>
+  </div>
+</div>
+  
+<div class="modal-footer">
+  <button class="btn btn-default" type="button" (click)="activeModal.hide()">Kembali</button>
+</div>
+  

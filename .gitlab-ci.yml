@@ -1,0 +1,47 @@
+stages:
+  - sonar-publish
+  - sonar-preview
+  - publish
+
+variables:
+  SONAR_URL: https://sonarqube.uii.ac.id
+  SONARQUBE_TOKEN: d6c7fe55df6c192b2dc66eba19df53b79a570906
+  SONAR_PROJECT_KEY: $CI_PROJECT_NAME
+  SONAR_SOURCES: .
+  SONAR_GITLAB_PROJECT_ID: $CI_PROJECT_ID
+  GIT_SSL_NO_VERIFY: "true"
+
+sonarqube-reports:
+  stage: sonar-publish
+  image: asia.gcr.io/uii-cloud-project/gitlab-sonar-scanner:1.2
+  variables:
+    SONAR_ANALYSIS_MODE: publish
+  script:
+    - gitlab-sonar-scanner -Dsonar.scm.provider=git
+  only:
+    - develop
+
+sonarqube:
+  stage: sonar-preview
+  image: asia.gcr.io/uii-cloud-project/gitlab-sonar-scanner:1.2 #ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_ANALYSIS_MODE: preview
+  script:
+    - gitlab-sonar-scanner -Dsonar.scm.provider=git -Dsonar.gitlab.ignore_certificate=true
+  only:
+    - develop
+
+publish:
+  stage: publish
+  image: node:10
+  script:
+    - npm config set registry https://npm.uii.ac.id
+    - npm install
+    - node_modules/.bin/ng build bill
+    - cp README.md dist/uiigateway/bill
+    - npm pack dist/uiigateway/bill
+    - cd dist/uiigateway/bill
+    - echo '//npm.uii.ac.id/:_authToken=${NPM_AUTH_TOKEN}'>.npmrc
+    - npm publish --registry https://npm.uii.ac.id
+  only:
+    - /^(\d+\.)(\d+\.)(\d+)$/ # match X.Y.Z tag format, ex: 1.0.0

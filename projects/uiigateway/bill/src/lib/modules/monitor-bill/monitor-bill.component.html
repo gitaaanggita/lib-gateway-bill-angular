@@ -1,0 +1,57 @@
+<h4 class="content-header-title">Monitoring</h4>
+
+<div class="content-body">
+  <form>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="control-label">Jenis tagihan</label>
+          <ngx-select
+          [formControl]="selectOption['jenis_tagihan'].formControl"
+          [items]="selectOption['jenis_tagihan'].items"
+          optionTextField="label"
+          optionValueField="value"
+          [defaultValue]="selectOption['jenis_tagihan'].defaultValue"
+          (select)="onSelectOption('jenis_tagihan', $event)"></ngx-select>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="control-label">Periode</label>
+          <ngx-select
+          [formControl]="selectOption['periode'].formControl"
+          [items]="selectOption['periode'].items"
+          optionTextField="label"
+          optionValueField="value"
+          [defaultValue]="selectOption['periode'].defaultValue"
+          (select)="onSelectOption('periode', $event)"></ngx-select>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="control-label">Status bayar</label>
+          <ngx-select
+          [formControl]="selectOption['status_bayar'].formControl"
+          optionTextField="label"
+          optionValueField="value"
+          [defaultValue]="selectOption['status_bayar'].defaultValue"
+          (select)="onSelectOption('status_bayar', $event)"></ngx-select>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group padding-top-25">
+          <div class="form-button-search button-action-left">
+            <button type="submit" class="btn btn-primary">Cari</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="table-wrapper">
+    <uii-table
+    *ngIf="showTable"
+    [actionColumn]="true"
+    [columns]="columns"
+    [rows]="rows"></uii-table>
+  </div>
+</div>

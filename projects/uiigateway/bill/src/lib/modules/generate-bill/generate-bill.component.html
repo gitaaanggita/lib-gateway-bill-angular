@@ -1,0 +1,104 @@
+<uii-tabset>
+  <uiiTabItem title="Semua Tagihan">
+    <div class="content-body">
+      <div class="row">
+        <div class="col-sm-5 padding-bottom-10" style="width: 50;">
+          <table class="table table-unbordered table-20-80">
+            <tr>
+              <td style="vertical-align: middle; padding: 0;">Fakultas</td>
+              <td style="vertical-align: middle; padding: 5;">Program studi</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 0; width: 50%;">
+                  <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 50%;">
+                  <ngx-select></ngx-select>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <uii-table
+        *ngIf="showTable"
+        [actionColumn]="true"
+        [columns]="columns"
+        [rows]="rows"></uii-table>
+      </div>
+    </div>
+  </uiiTabItem>
+  <uiiTabItem title="Tagihan Perserorangan">
+    <div class="content-body">
+      <div class="row">
+        <div class="col-sm-2 padding-bottom-10" style="width: 100%;">
+          <table class="table table-unbordered table 20-80 margin-bottom-0">
+            <tr>
+              <td style="vertical-align: middle; padding: 5;">Jenis tagihan</td>
+              <td style="vertical-align: middle; padding: 5;">Periode</td>
+              <td style="vertical-align: middle; padding: 5;">Angsuran</td>
+              <td style="vertical-align: middle; padding: 5;">NIM</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 5; width: 25%;">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 20%">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 20%;">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 25%;">
+                <input class="form-control">
+              </td>
+              <td>
+                <button class="btn btn-primary" type="button">Cek tagihan</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="content-border"></div>
+      <div class="conten-body">
+        Tagihan
+        <div class="panel-body">
+          <table class="table table-unbordered table 30-70">
+            <tr>
+              <td class="padding-5">NIM</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Nama</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Fakultas</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Program studi</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Tagihan</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Total tagihan</td>
+              <td class="padding-5"> : </td>
+            </tr>
+            <tr>
+              <td class="padding-5">Keterangan</td>
+              <td class="padding-5"> : </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="form-button button-action-center margin-top-10">
+        <button class="btn btn-default" type="button">Batal</button>
+        <button class="btn btn-primary" type="submit">Buat tagihan</button>
+      </div>
+    </div>
+  </uiiTabItem>
+</uii-tabset>

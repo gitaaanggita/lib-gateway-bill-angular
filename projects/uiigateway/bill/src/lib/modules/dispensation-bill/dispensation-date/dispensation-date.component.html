@@ -1,0 +1,162 @@
+<uii-tabset>
+  <uiiTabItem title="Tagihan Perseorangan">
+    <div class="content-body">
+      <div class="row">
+        <div class="col-md-2 input-padding-right" style="padding-left: 10px;">
+          <label>Nomor tagihan</label>
+          <input type="text" class="form-control" required maxlength="10">
+        </div>
+        <div class="col-sm-5" style="padding-left: 20px;">
+          <div class="table-responsive">
+            <table class="table table-unbordered table-40-60">
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">NIM</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Nama</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Fakultas</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Program studi</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-5" style="padding-left: 20px;">
+          <div class="table-responsive">
+            <table class="table table-unbordered table-40-60">
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Periode</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Jenis tagihan</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Status bayar</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle; padding: 0;">Angsuran</td>
+                <td style="vertical-align: middle; padding: 0;">:</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="content-border"></div>
+      <label>Jadwal</label>
+      <div class="row">
+        <div class="form-group col-sm-7" style="width: 100%">
+          <div class="panel-body">
+            <div class="col-sm-6">
+              <label class="control-label">Tanggal publish</label>
+              <div class="input-group">
+                <input class="form-control" [readOnly]="true">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>                
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label">Tanggal akhir pembayaran</label>
+              <div class="input-group">
+                <input class="form-control">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-button button-action-center margin-top-10">
+        <button class="btn btn-default" type="button">Batal</button>
+        <button class="btn btn-primary" type="submit">Simpan</button>
+      </div>
+    </div>
+  </uiiTabItem>
+  <uiiTabItem title="Tagihan per Program Studi">
+    <div class="content-body">
+      <div class="row">
+        <div class="col-sm-2 padding-bottom-10" style="width: 100%;">
+          <table class="table table-unbordered table 20-80 margin-bottom-0">
+            <tr>
+              <td style="vertical-align: middle; padding: 5;">Periode</td>
+              <td style="vertical-align: middle; padding: 5;">Angsuran</td>
+              <td style="vertical-align: middle; padding: 5;">Jenis tagihan</td>
+              <td style="vertical-align: middle; padding: 5;">Program studi</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle; padding: 5; width: 25%;">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 20%">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 20%;">
+                <ngx-select></ngx-select>
+              </td>
+              <td style="vertical-align: middle; padding: 5; width: 25%;">
+                <ngx-select></ngx-select>
+              </td>
+              <td>
+                <button class="btn btn-primary" type="button">Cari</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="content-border"></div>
+      <div class="table-responsive margin-bottom-10">
+        <table class="table table-unbordered table-20-80 margin-bottom-0">
+          <tr>
+            <td style="vertical-align: middle;">Periode</td>
+            <td style="vertical-align: middle;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;">Angsuran</td>
+            <td style="vertical-align: middle;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;">Jenis tagihan</td>
+            <td style="vertical-align: middle;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;">Program studi</td>
+            <td style="vertical-align: middle;">:</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle; padding-bottom: 10;">Jadwal</td>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-7" style="width: 100%">
+          <div class="panel-body">
+            <div class="col-sm-6">
+              <label class="control-label">Tanggal publish</label>
+              <div class="input-gorup">
+                <input class="form-control" [readOnly]="true">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label">Tanggal akhir pembayaran</label>
+              <div class="input-group">
+                <input class="form-control">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-button button-action-center margin-top-10">
+        <button class="btn btn-default" type="button">Batal</button>
+        <button class="btn btn-primary" type="submit">Simpan</button>
+      </div>
+    </div>
+  </uiiTabItem>
+</uii-tabset>

@@ -1,0 +1,42 @@
+<h4 class="content-header-title">Buat tagihan</h4>
+
+<uii-tabset>
+  <uiiTabItem title="Berhasil">
+    <div class="content-body">
+      <table class="table table-unbordered table 30-70">
+        <tr>
+          <td class="padding-5">Program studi</td>
+        </tr>
+        <tr>
+          <td class="padding-5">Jenis tagihan</td>
+        </tr>
+      </table>
+      <div class="table-wrapper">
+        <!-- <uii-table
+        *ngIf="showTable"
+        [actionColumn]="true"
+        [columns]="columns"
+        [rows]="rows"></uii-table> -->
+      </div>
+    </div>
+  </uiiTabItem>
+  <uiiTabItem title="Gagal">
+    <div class="content-body">
+      <table class="table table-unbordered table 30-70">
+        <tr>
+          <td class="padding-5">Program studi</td>
+        </tr>
+        <tr>
+          <td class="padding-5">Jenis tagihan</td>
+        </tr>
+      </table>
+      <div class="table-wrapper">
+        <uii-table
+        *ngIf="showTable"
+        [actionColumn]="true"
+        [columns]="columns"
+        [rows]="rows"></uii-table>
+      </div>
+    </div>
+  </uiiTabItem>
+</uii-tabset>

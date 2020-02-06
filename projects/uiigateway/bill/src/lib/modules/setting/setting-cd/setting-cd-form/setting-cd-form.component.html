@@ -1,0 +1,41 @@
+<h4 class="content-header-title">Tambah</h4>
+<div class="content-body">
+  <form>
+    <div class="form-group">
+      <label class="control-label control-required">Program studi</label>
+      <ngx-select></ngx-select>
+    </div>
+    <div class="form-group">
+      <label class="control-label control-required">Periode</label>
+      <ngx-select></ngx-select>
+    </div>
+    <div class="form-group">
+      <label class="control-label control-required">Angsuran</label>
+      <ngx-select></ngx-select>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label control-required">Tanggal publish</label>
+          <div class="input-group">
+            <input class="form-control">
+            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label control-required">Tanggal akhir pembayaran</label>
+            <div class="input-group">
+              <input class="form-control">
+              <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-button button-action-center">
+      <button class="btn btn-default" type="button" (click)="onBtnBackClick()">Batal</button>
+      <button class="btn btn-primary" type="submit">Simpan</button>
+    </div>
+  </form>
+</div>

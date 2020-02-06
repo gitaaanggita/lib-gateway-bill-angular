@@ -1,0 +1,30 @@
+<h4 class="content-header-title">
+  Tagihan caturdharma
+</h4>
+<div class="content-body">
+  <div class="row">
+    <div class="col-sm-5 padding-bottom-15">
+      <table class="table table-unbordered table-20-80 margin-bottom-0">
+          <tr>
+              <td style="vertical-align: middle; padding: 0;">Fakultas</td>
+              <td style="vertical-align: middle;"> : </td>
+              <td style="vertical-align: middle; padding: 0;">
+                <ngx-select></ngx-select>
+              </td>
+            </tr>
+      </table>
+    </div>
+    <div class="col-sm-7">
+      <div class="button-action-right">
+        <button class="btn btn-primary" (click)="onBtnAddClick()">Tambah</button>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <uii-table
+    *ngIf="showTable"
+    [actionColumn]="true"
+    [columns]="columns"
+    [rows]="rows"></uii-table>
+  </div>
+</div>

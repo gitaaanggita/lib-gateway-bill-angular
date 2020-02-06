@@ -1,0 +1,65 @@
+<div class="modal-header custom">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h5 class="modal-title">{{ 'Two Factor Authentication' | translate }} </h5>
+</div>
+<div class="modal-body custom">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body" style="height:195px;">
+                    <h6>1. {{ 'download the google authenticator app'|translate}}</h6>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center margin-bottom-10">    
+                            <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" class="appLink" target="_blank">
+                                <img src="assets/images/2FA/app-store.png" alt="appstore">
+                            </a>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en" class="appLink" target="_blank">
+                                <img src="assets/images/2FA/google-play.png" alt="googleplay">
+                            </a>    
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+        </div>    
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h6>2. {{ 'scan and backup the following QRCode'|translate}} </h6>
+
+                    <div class="text-center qrCode">
+                        <img src="{{ twoFA?.fa_url }}" alt="QR Code">
+                    </div>
+                    <div class="text-center">
+                        <label class="control-label text-center"><strong>{{ twoFA?.fa_key }}</strong></label>
+                    </div>
+                </div>    
+            </div>    
+        </div>   
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h6>3. {{ 'enter the code from Google Authenticator' | translate }}</h6> 
+            
+            <form [formGroup]="authenticatorForm" (ngSubmit)="onFormKeyAuthenticatorSubmit()">   
+
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="key">
+                </div>                   
+            
+                <div class="form-button button-action-right">
+                    <button class="btn btn-success" type="submit" [disabled]="!authenticatorForm.valid || onSubmitRequest" [ngClass]="{ 'loading' : onSubmitRequest }">{{ 'save' | translate }}</button>
+                </div>
+
+            </form>
+        </div>    
+    </div>    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="activeModal.hide()">{{ 'Kembali' | translate }}</button>
+</div>

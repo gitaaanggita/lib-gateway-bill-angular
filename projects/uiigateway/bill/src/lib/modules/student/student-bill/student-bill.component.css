@@ -1,0 +1,10 @@
+.chart-container {
+    border: 1px solid #cccccc;
+    padding: 20px 10px 10px 10px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 15px;
+}
